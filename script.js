@@ -655,10 +655,10 @@ const app = {
         const finalScoreText = document.getElementById('final-score-text');
         if (finalScoreText) finalScoreText.innerText = `${percentage}%`;
         
-        let feedback = "";
-        if (percentage >= 80) feedback = "Świetny wynik. Materiał został przez Ciebie w pełni zintegrowany.";
-        else if (percentage >= 50) feedback = "Solidna podstawa. Przejrzyj błędne odpowiedzi korzystając z Nawigatora.";
-        else feedback = "Wymagana rekalibracja. Wróć do modułu Syntezy Materiałów i spróbuj ponownie.";
+       let feedback = "";
+        if (percentage >= 80) feedback = "specjalisto szacuneczek";
+        else if (percentage >= 50) feedback = "nieźle, ale prawdziwego pewnie nie zdasz";
+        else feedback = "spróbuj jeszcze raz (we wrześniu heh)";
         
         const quizFeedback = document.getElementById('quiz-feedback');
         if (quizFeedback) quizFeedback.innerText = feedback;
