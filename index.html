@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZP | Nauka Zarządzania Procesami</title>
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://twojadomena.pl/">
+    <meta property="og:title" content="ZP | Nauka Zarządzania Procesami">
+    <meta property="og:description" content="Nowoczesna platforma AI do nauki. Zdobądź wiedzę przez interaktywne quizy, fiszki i podsumowania.">
+    <meta property="og:image" content="https://twojadomena.pl/preview.jpg">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-layout">
+        <div id="sidebar-overlay" class="sidebar-overlay"></div>
+        
+        <header class="mobile-header">
+            <div class="brand-text">ZP<span class="brand-dot">.</span></div>
+            <button id="mobile-menu-btn" class="btn-icon">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 12h18M3 6h18M3 18h18"/>
+                </svg>
+            </button>
+        </header>
+
+        <aside class="sidebar">
+            <div class="brand">
+                <span class="brand-text">ZP<span class="brand-dot">.</span></span>
+            </div>
+            
+            <nav class="nav-menu">
+                <button class="nav-item active" data-target="dashboard">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+                    Przegląd
+                </button>
+                <button class="nav-item" data-target="quiz">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+                    Quiz
+                </button>
+                <button class="nav-item" data-target="flashcards">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    Fiszki
+                </button>
+                <button class="nav-item" data-target="summary">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                    Ważne pojęcia
+                </button>
+                <button class="nav-item" onclick="window.location.href='simulator.html'">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                    Symulator Egzaminu
+                </button>
+            </nav>
+
+            <div class="progress-widget">
+                <div class="progress-header">
+                    <span class="progress-label">Ukończenie modułu</span>
+                    <span class="progress-value" id="progress-percent">0%</span>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill" id="global-progress"></div>
+                </div>
+                
+                <div class="progress-header" style="margin-top: 1.25rem;">
+                    <span class="progress-label" style="color: var(--success-color);">Przyswojona wiedza</span>
+                    <span class="progress-value" id="mastery-percent">0%</span>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill mastery-fill" id="mastery-progress"></div>
+                </div>
+
+                <button id="reset-progress-btn" class="btn btn-ghost btn-sm" onclick="app.resetProgress()" style="margin-top: 1.5rem; width: 100%; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+                    Resetuj postęp
+                </button>
+            </div>
+        </aside>
+
+        <main class="content-wrapper">
+            <div id="loader" class="loader-overlay active">
+                <div class="spinner"></div>
+                <p>Przygotowywanie środowiska...</p>
+            </div>
+
+            <section id="dashboard" class="view-section">
+                <header class="section-header">
+                    <h1>Nauka Zarządzania Procesami</h1>
+                    <p>Quiz, fiszki i najważniejsze pojęcia</p>
+                </header>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-label">Baza Pytań</span>
+                        <strong class="stat-number">150</strong>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-label">Dostępne Fiszki</span>
+                        <strong class="stat-number">50</strong>
+                    </div>
+                    <div class="stat-card highlight-card">
+                        <span class="stat-label">Gotowość do egzaminu</span>
+                        <strong class="stat-number" id="readiness-score">0%</strong>
+                    </div>
+                </div>
+
+                <div class="action-card">
+                    <div class="action-content">
+                        <h2>Rozpocznij sesję nauki</h2>
+                        <p>Zarządzanie Procesami Biznesowymi. Utrwal wiedzę z zakresu optymalizacji, Six Sigma, metodyk zwinnych oraz notacji BPMN.</p>
+                    </div>
+                    <button class="btn btn-primary" onclick="app.navigate('quiz')">Uruchom Test</button>
+                </div>
+            </section>
+
+            <section id="quiz" class="view-section hidden">
+                <header class="section-header">
+                    <h1>Weryfikacja Wiedzy</h1>
+                </header>
+                
+                <div id="quiz-container" class="quiz-panel">
+                    <div class="quiz-modern-nav">
+                        <button id="nav-prev-btn" class="btn-icon" title="Poprzednie pytanie">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+                        </button>
+                        
+                        <div id="nav-map-toggle" class="progress-pill" title="Pokaż mapę quizu">
+                            <span id="pill-text" class="pill-title">Pytanie 1 / 150</span>
+                            <span class="pill-subtitle">Kliknij, by otworzyć mapę</span>
+                            <div class="pill-track"><div id="pill-fill" class="pill-fill"></div></div>
+                        </div>
+
+                        <button id="nav-next-btn" class="btn-icon" title="Następne pytanie">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+                        </button>
+                    </div>
+
+                    <div style="display: flex; justify-content: flex-end; margin-bottom: 1.5rem;">
+                        <span id="quiz-score" class="score-display">0 pkt</span>
+                    </div>
+
+                    <h2 id="question-text" class="question-title">Ładowanie pytania...</h2>
+                    <div id="options-container" class="options-list"></div>
+                    
+                    <div class="quiz-footer">
+                        <button id="finish-btn" class="btn btn-primary hidden" onclick="app.showQuizResults()" style="margin-right: auto;">Zakończ i oceń</button>
+                        <button id="next-btn" class="btn btn-secondary hidden">Kolejne pytanie</button>
+                    </div>
+                </div>
+
+                <div id="quiz-map-modal" class="glass-modal hidden">
+                    <div class="glass-modal-content">
+                        <div class="modal-header">
+                            <h2 style="font-size: 1.25rem;">Nawigator Quizu</h2>
+                            <button id="close-map-btn" class="btn-icon">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="map-stats">
+                                <div class="stat-badge"><span class="dot correct-dot"></span>Poprawne: <b id="map-stat-c">0</b></div>
+                                <div class="stat-badge"><span class="dot wrong-dot"></span>Błędne: <b id="map-stat-w">0</b></div>
+                                <div class="stat-badge"><span class="dot empty-dot"></span>Pozostało: <b id="map-stat-l">150</b></div>
+                            </div>
+                            <div id="quiz-navigator" class="quiz-navigator-grid"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="quiz-results" class="results-panel hidden">
+                    <div class="results-content">
+                        <h2>Podsumowanie wyników</h2>
+                        <div class="score-circle">
+                            <span id="final-score-text">0%</span>
+                        </div>
+                        <p id="quiz-feedback" class="feedback-text"></p>
+                        <button class="btn btn-primary" onclick="app.initQuiz()">Wykonaj ponownie</button>
+                    </div>
+                </div>
+            </section>
+
+            <section id="flashcards" class="view-section hidden">
+                <header class="section-header">
+                    <h1>Pojęcia Kluczowe</h1>
+                    <p>Wybierz kartę, aby poznać definicję. Użyj nawigacji poniżej.</p>
+                </header>
+                
+                <div class="flashcard-scene">
+                    <div class="flashcard-element" id="flashcard">
+                        <div class="fc-face fc-front">
+                            <h3 id="fc-front">Pojęcie</h3>
+                            <span class="hint">Kliknij, aby odwrócić</span>
+                        </div>
+                        <div class="fc-face fc-back">
+                            <p id="fc-back">Definicja</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flashcard-navigation">
+                    <button class="btn btn-icon" id="fc-prev">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                    </button>
+                    <span id="fc-counter" class="fc-count">1 / 50</span>
+                    <button class="btn btn-icon" id="fc-next">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </button>
+                </div>
+            </section>
+
+            <section id="summary" class="view-section hidden">
+                <header class="section-header">
+                    <h1>Synteza Materiałów</h1>
+                    <p>Najważniejsze zagadnienia wyekstrahowane z materiałów.</p>
+                </header>
+                <div id="summary-container" class="accordion-layout">
+                    </div>
+            </section>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

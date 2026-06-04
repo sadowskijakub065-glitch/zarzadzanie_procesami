@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZP | Symulator Egzaminu</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-layout">
+        <div id="sidebar-overlay" class="sidebar-overlay"></div>
+        
+        <header class="mobile-header">
+            <div class="brand-text">ZP<span class="brand-dot">.</span></div>
+            <button id="mobile-menu-btn" class="btn-icon">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 12h18M3 6h18M3 18h18"/>
+                </svg>
+            </button>
+        </header>
+
+        <aside class="sidebar">
+            <div class="brand">
+                <span class="brand-text">ZP<span class="brand-dot">.</span></span>
+            </div>
+            
+            <nav class="nav-menu">
+                <button class="nav-item" onclick="window.location.href='index.html'">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+                    Wróć do Nauki
+                </button>
+                
+                <button class="nav-item active">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                    Symulator Egzaminu
+                </button>
+            </nav>
+
+            <div class="progress-widget">
+                <div class="progress-header">
+                    <span class="progress-label">Ukończenie modułu</span>
+                    <span class="progress-value" id="progress-percent">0%</span>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill" id="global-progress"></div>
+                </div>
+                
+                <div class="progress-header" style="margin-top: 1.25rem;">
+                    <span class="progress-label" style="color: var(--success-color);">Przyswojona wiedza</span>
+                    <span class="progress-value" id="mastery-percent">0%</span>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill mastery-fill" id="mastery-progress"></div>
+                </div>
+            </div>
+        </aside>
+
+        <main class="content-wrapper">
+            <div id="loader" class="loader-overlay active">
+                <div class="spinner"></div>
+            </div>
+
+            <section class="view-section active">
+                <header class="section-header">
+                    <h1>Symulacja Egzaminu</h1>
+                    <p>Tryb testowy z rygorystycznymi zasadami czasu.</p>
+                </header>
+
+                <div class="action-card" style="flex-direction: column; align-items: flex-start;">
+                    <div class="action-content" style="margin-bottom: 1.5rem;">
+                        <h2>W budowie 🚧</h2>
+                        <p style="margin-top: 0.5rem;">tu ma być symulator egzaminu który będzie losował 30 pytań z bazy, będzie limit czasu (pewnie 45 min ale nie wiem ile bedzie na egzaminie) i potem od razu będzie podawał wynik</p>
+                    </div>
+                    <button class="btn btn-secondary" disabled style="opacity: 0.5; cursor: not-allowed;">
+                        Zablokowane do czasu do kiedy nie zrobie
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <script src="simulator.js"></script>
+</body>
+</html>
