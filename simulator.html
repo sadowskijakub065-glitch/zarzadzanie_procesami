@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZP | Symulator Egzaminu</title>
+    <title>SIZ | Symulator Egzaminu</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,7 +14,7 @@
         <div id="sidebar-overlay" class="sidebar-overlay"></div>
         
         <header class="mobile-header">
-            <div class="brand-text">ZP<span class="brand-dot">.</span></div>
+            <div class="brand-text">SIZ<span class="brand-dot">.</span></div>
             <button id="mobile-menu-btn" class="btn-icon">
                 <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M3 12h18M3 6h18M3 18h18"/>
@@ -24,12 +24,12 @@
 
         <aside class="sidebar">
             <div class="brand">
-                <span class="brand-text">ZP<span class="brand-dot">.</span></span>
+                <span class="brand-text">SIZ<span class="brand-dot">.</span></span>
             </div>
             
             <nav class="nav-menu">
                 <button class="nav-item" onclick="window.location.href='index.html'">
-                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
                     Wróć do Nauki
                 </button>
                 
@@ -63,25 +63,132 @@
                 <div class="spinner"></div>
             </div>
 
-            <section class="view-section active">
+            <section id="exam-intro" class="view-section active">
                 <header class="section-header">
                     <h1>Symulacja Egzaminu</h1>
-                    <p>Tryb testowy zeby sprawdzic przed egzaminem jak bardzo w dupie jestesmy</p>
+                    <p>Sprawdź się</p>
                 </header>
 
-                <div class="action-card" style="flex-direction: column; align-items: flex-start;">
-                    <div class="action-content" style="margin-bottom: 1.5rem;">
-                        <h2>W budowie 🚧</h2>
-                        <p style="margin-top: 0.5rem;">tu ma być symulator egzaminu który będzie losował 30 pytań z bazy, będzie limit czasu (pewnie 45 min ale nie wiem ile bedzie na egzaminie) i potem od razu będzie podawał wynik</p>
+                <div class="premium-intro-card">
+                    <div class="intro-card-header">
+                        <div class="intro-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                        </div>
+                        <h2>Zasady i przebieg</h2>
+                        <p>Zanim uruchomisz odliczanie, zapoznaj się z wymogami testu.</p>
                     </div>
-                    <button class="btn btn-secondary" disabled style="opacity: 0.5; cursor: not-allowed;">
-                        Zablokowane do czasu do kiedy nie zrobie
-                    </button>
+
+                    <ul class="premium-rules-list">
+                        <li>
+                            <div class="rule-bullet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></div>
+                            <div class="rule-text">Z bazy zostanie wylosowanych <strong>30 unikalnych pytań</strong> (w losowej kolejności).</div>
+                        </li>
+                        <li>
+                            <div class="rule-bullet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div>
+                            <div class="rule-text">Czas na rozwiązanie testu wynosi dokładnie <strong>45 minut</strong>. Egzamin zamyka się automatycznie.</div>
+                        </li>
+                        <li>
+                            <div class="rule-bullet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg></div>
+                            <div class="rule-text">Każde pytanie posiada 7 wariantów odpowiedzi. Może być <strong>od 1 do 7</strong> poprawnych opcji.</div>
+                        </li>
+                        <li>
+                            <div class="rule-bullet danger-bullet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg></div>
+                            <div class="rule-text">Punktacja jest zero-jedynkowa. Zaznaczenie nawet jednej błędnej odpowiedzi (lub pominięcie poprawnej) to <strong style="color: var(--danger-color);">0 punktów</strong> za dane pytanie.</div>
+                        </li>
+                        <li>
+                            <div class="rule-bullet success-bullet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div>
+                            <div class="rule-text">Zaliczenie egzaminu następuje po przekroczeniu progu 51% (wymagane min. <strong>16 / 30 pkt</strong>).</div>
+                        </li>
+                    </ul>
+
+                    <div class="intro-card-footer">
+                        <button class="btn btn-primary btn-glow" onclick="simulator.startExam()">
+                            Rozpocznij symulację
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </button>
+                    </div>
                 </div>
             </section>
+
+            <section id="exam-core" class="view-section hidden">
+                <div id="exam-timer-bar" class="exam-timer-bar">
+                    <div class="timer-label">Pozostały czas</div>
+                    <div id="time-display" class="time-display">45:00</div>
+                </div>
+
+                <div id="quiz-container" class="quiz-panel">
+                    <div class="quiz-modern-nav">
+                        <button id="nav-prev-btn" class="btn-icon" title="Poprzednie pytanie">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+                        </button>
+                        
+                        <div id="nav-map-toggle" class="progress-pill" title="Pokaż mapę quizu">
+                            <span id="pill-text" class="pill-title">Pytanie 1 / 30</span>
+                            <div class="pill-track"><div id="pill-fill" class="pill-fill"></div></div>
+                        </div>
+
+                        <button id="nav-next-btn" class="btn-icon" title="Następne pytanie">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+                        </button>
+                    </div>
+
+                    <h2 id="question-text" class="question-title" style="margin-top: 2rem;">Ładowanie pytania...</h2>
+                    
+                    <p id="review-status" class="hidden" style="margin-bottom: 1rem; font-weight: 600;"></p>
+                    
+                    <div id="options-container" class="options-list"></div>
+                    
+                    <div class="quiz-footer" style="margin-top: 3rem; justify-content: space-between;">
+                        <button class="btn btn-secondary" onclick="simulator.showEndConfirm()">Zakończ Egzamin</button>
+                        <button id="next-btn" class="btn btn-primary hidden">Następne pytanie</button>
+                    </div>
+                </div>
+            </section>
+
+            <section id="exam-results" class="view-section hidden">
+                <div class="results-panel" style="padding: 2rem 0;">
+                    <div class="results-content" style="max-width: 500px;">
+                        <h2 id="result-status-title" style="font-size: 2rem; margin-bottom: 1rem;">Ocenianie...</h2>
+                        <div class="score-circle" id="result-circle" style="width: 200px; height: 200px; font-size: 3.5rem;">
+                            <span id="final-score-text">0%</span>
+                        </div>
+                        <p id="result-points" style="font-size: 1.25rem; color: var(--text-secondary); margin-bottom: 2rem;">Zdobyte punkty: 0 / 30</p>
+                        
+                        <div style="display: flex; gap: 1rem; justify-content: center; flex-direction: column;">
+                            <button class="btn btn-secondary" onclick="simulator.startReviewMode()">Analiza błędów (Przegląd)</button>
+                            <button class="btn btn-primary" onclick="window.location.reload()">Spróbuj ponownie</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div id="quiz-map-modal" class="glass-modal hidden">
+                <div class="glass-modal-content">
+                    <div class="modal-header">
+                        <h2>Nawigator Egzaminu</h2>
+                        <button id="close-map-btn" class="btn-icon">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="quiz-navigator" class="quiz-navigator-grid"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="confirm-modal" class="glass-modal hidden" style="z-index: 3000;">
+                <div class="glass-modal-content" style="max-width: 400px; text-align: center; padding: 2rem;">
+                    <h2 style="margin-bottom: 1rem;">Zakończyć egzamin?</h2>
+                    <p id="confirm-modal-text" style="color: var(--text-secondary); margin-bottom: 2rem;">Odpowiedziałeś na X z 30 pytań.</p>
+                    <div style="display: flex; gap: 1rem; justify-content: center;">
+                        <button class="btn btn-secondary" onclick="document.getElementById('confirm-modal').classList.add('hidden')">Wróć do testu</button>
+                        <button class="btn btn-primary" style="background: var(--danger-color); color: white;" onclick="simulator.submitExam()">Zakończ bezpowrotnie</button>
+                    </div>
+                </div>
+            </div>
+
         </main>
     </div>
-    
     <script src="simulator.js"></script>
 </body>
 </html>
