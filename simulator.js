@@ -523,9 +523,86 @@ const examDatabase = [
             "Ryzyko PR (public relations) i ryzyko dla klienta/konsumenta to przykłady potencjalnych ryzyk uwzględnianych w raporcie incydentu."
         ],
         correct: [0, 1, 2, 4, 5, 6]
+    },
+    {
+        question: "Jakie narzędzia są wykorzystywane do zdefiniowania problemu, celów, zakresu projektu i klientów na etapie Define w procedurze DMAIC?",
+        options: [
+            "SIPOC", 
+            "CVC", 
+            "CTQ", 
+            "Diagram Ishikawy", 
+            "CTB", 
+            "Model Kano", 
+            "Analiza interesariuszy"
+        ],
+        correct: [0, 1, 2, 4, 5, 6] 
+    },
+    {
+        question: "Jakie narzędzia są wykorzystywane do zbierania danych, upewnienia się co do miar i ujęcia problemu w sposób ilościowy na etapie Measure w procedurze DMAIC?",
+        options: [
+            "Diagram Pareto", 
+            "Macierz miar", 
+            "CVC", 
+            "Diagram Ishikawy", 
+            "Histogram i Karta przebiegu procesu", 
+            "DPMO", 
+            "Analiza interesariuszy"
+        ],
+        correct: [0, 1, 4, 5] 
+    },
+    {
+        question: "Jakie narzędzia są wykorzystywane do identyfikacji prawdziwych przyczyn/źródeł problemów na etapie Analyze w procedurze DMAIC?",
+        options: [
+            "Diagram Pareto", 
+            "Diagram Ishikawy", 
+            "CVC", 
+            "Diagram basenowy", 
+            "Diagram spaghetti", 
+            "7 rodzajów niegospodarności (marnotrawstwa)", 
+            "DOE"
+        ],
+        correct: [1, 3, 4, 5, 6] 
+    },
+    {
+        question: "Jakie narzędzia są wykorzystywane do opracowywania, wyboru i implementacji rozwiązań eliminujących przyczyny bazowe na etapie Improve w procedurze DMAIC?",
+        options: [
+            "CTB", 
+            "5S", 
+            "Odwrotna burza mózgów", 
+            "SCAMPER", 
+            "Diagram spaghetti", 
+            "DPMO", 
+            "Poka Yoke"
+        ],
+        correct: [1, 2, 3, 6] 
+    },
+    {
+        question: "W jakim obszarze słabo sprawdza się model BPM?",
+        options: [
+            "Model transakcyjny", 
+            "Model ekspercki", 
+            "Model współpracy", 
+            "Model integracyjny", 
+            "Model drzewiasty why-why", 
+            "Model subskrypcyjny", 
+            "Model B2B"
+        ],
+        correct: [1, 2] 
+    },
+    {
+        question: "Rozwinięcie skrótu RACI to:",
+        options: [
+            "Responsible", 
+            "Recover", 
+            "Advertising", 
+            "Accountable", 
+            "Consulted", 
+            "Improve", 
+            "Informed"
+        ],
+        correct: [0, 3, 4, 6] 
     }
 ];
-
 const simulator = {
     state: {
         questions: [],          // Wylosowane 30 pytań
